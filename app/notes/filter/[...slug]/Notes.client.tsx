@@ -44,8 +44,6 @@ function Notes({ initialData, tag }: NotesProps) {
     setIsOpenModal(false);
   };
 
-  console.log(initialData);
-
   return (
     <div className={css.app}>
       <header className={css.toolbar}>

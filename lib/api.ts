@@ -97,13 +97,3 @@ export const getSingleNote = async (id: number): Promise<Note> => {
   });
   return response.data;
 };
-
-// export const getCategories = async () => {
-//   const notesData = await fetchNotes();
-//   const tags = Array.from(new Set(notesData.notes.map((note) => note.tag)));
-
-//   return tags.map((tag, index) => ({
-//     id: index + 1,
-//     name: tag,
-//   }));
-// };

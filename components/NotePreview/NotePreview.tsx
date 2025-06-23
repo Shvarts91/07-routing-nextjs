@@ -1,10 +1,7 @@
 "use client";
-
 import { useQuery } from "@tanstack/react-query";
-import { getSingleNote } from "@/lib/api"; // або звідки в тебе береться одна нотатка
-
-// import Modal from "./Modal";
-// import css from "./NotePreview.module.css"; // зроби новий або використай існуючий
+import { getSingleNote } from "@/lib/api";
+import css from "./NotePreview.module.css"; // зроби новий або використай існуючий
 import { Note } from "@/types/note";
 
 interface NotePreviewProps {

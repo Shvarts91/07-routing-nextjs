@@ -1,19 +1,20 @@
-import Modal from "@/components/Modal/Modal";
-import NotePreview from "@/components/NotePreview/NotePreview";
-import { useParams, useRouter } from "next/navigation";
+import { getSingleNote } from "@/lib/api";
 
-const NoteModalPage = () => {
-  const params = useParams();
-  const router = useRouter();
+import NoteClient from "./Note.client";
 
-  const closeModal = () => {
-    router.back();
-  };
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+const NoteModalPage = async ({ params }: Props) => {
+  const { id } = await params;
+  const note = await getSingleNote(Number(id));
 
   return (
-    <Modal closeModal={closeModal}>
-      <NotePreview id={Number(params.id)} />
-    </Modal>
+    <NoteClient note={note} />
+    // <Modal closeModal={closeModal}>
+    //   <NotePreview id={Number(params.id)} />
+    // </Modal>
   );
 };
 
