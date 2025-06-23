@@ -5,12 +5,14 @@ import css from "./NotesPage.module.css";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import Pagination from "@/components/Pagination/Pagination";
-import NoteModal from "@/components/NoteModal/NoteModal";
+
 import { useDebounce } from "use-debounce";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import Loader from "@/components/Loader/Loader";
 import NoteList from "@/components/NoteList/NoteList";
 import { fetchNotes, NotesResponse } from "@/lib/api";
+import Modal from "@/components/Modal/Modal";
+import NoteForm from "@/components/NoteForm/NoteForm";
 
 interface NotesProps {
   initialData: NotesResponse;
@@ -42,6 +44,8 @@ function Notes({ initialData, tag }: NotesProps) {
     setIsOpenModal(false);
   };
 
+  console.log(initialData);
+
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
@@ -58,7 +62,11 @@ function Notes({ initialData, tag }: NotesProps) {
           Create note +
         </button>
       </header>
-      {isOpenModal && <NoteModal closeModal={closeModal} />}
+      {isOpenModal && (
+        <Modal closeModal={closeModal}>
+          <NoteForm onClose={closeModal} />
+        </Modal>
+      )}
       {isPending && <Loader />}
       {data?.notes && <NoteList list={data.notes} />}
       {isError && <ErrorMessage />}

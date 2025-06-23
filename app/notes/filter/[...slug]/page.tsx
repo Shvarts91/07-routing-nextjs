@@ -8,11 +8,13 @@ type Props = {
   };
 };
 
-export default async function FilteredNotesPage({ params: { slug } }: Props) {
-  const tag = slug?.[0] === "all" ? undefined : slug?.[0];
+export default async function FilteredNotesPage({ params }: Props) {
+  const tags = await params;
+  const tag = tags.slug?.[0] === "all" ? undefined : tags.slug?.[0];
 
   try {
     const initialData = await fetchNotes(1, "", tag);
+
     return <Notes initialData={initialData} tag={tag} />;
   } catch {
     return notFound();

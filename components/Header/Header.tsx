@@ -1,10 +1,16 @@
 import Link from "next/link";
 import css from "./Header.module.css";
 import TagsMenu from "../TagsMenu/TagsMenu";
-import { getTags } from "@/lib/api";
+// import { getTags } from "@/lib/api";
 
 const Header = async () => {
-  const categories = await getTags();
+  const tags = [
+    { id: 1, name: "Todo" },
+    { id: 2, name: "Work" },
+    { id: 3, name: "Work" },
+  ];
+
+  // const categories = await getTags();
 
   return (
     <header className={css.header}>
@@ -17,7 +23,7 @@ const Header = async () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <TagsMenu categories={categories} />
+            <TagsMenu categories={tags} />
           </li>
         </ul>
       </nav>
