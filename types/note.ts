@@ -15,14 +15,6 @@ export interface CreateNoteType {
   tag: "" | NoteTag;
 }
 
-// export type Category = {
-//   id: string;
-//   name: string;
-//   description: string;
-//   createdAt: string;
-//   updatedAt: string;
-// };
-
 export type Category = {
   id: number;
   name: string;

@@ -1,5 +1,5 @@
 import axios, { type AxiosResponse } from "axios";
-import type { Category, CreateNoteType, Note } from "../types/note";
+import type { CreateNoteType, Note } from "../types/note";
 
 export interface NotesResponse {
   notes: Note[];
@@ -36,33 +36,6 @@ export const fetchNotes = async (
   });
 
   return response.data;
-};
-
-export const getTags = async (): Promise<Category[]> => {
-  // const perPage = 12;
-  let page = 1;
-  let hasMore = true;
-  const tagsSet = new Set<string>();
-
-  while (hasMore) {
-    const { notes, totalPages } = await fetchNotes(page, "", undefined);
-
-    for (const note of notes) {
-      if (note.tag) {
-        tagsSet.add(note.tag);
-      }
-    }
-
-    page += 1;
-    hasMore = page <= totalPages;
-  }
-
-  const result = Array.from(tagsSet).map((tag, index) => ({
-    id: index + 1,
-    name: tag,
-  }));
-
-  return result;
 };
 
 export const createNote = async (payload: CreateNoteType): Promise<Note> => {
