@@ -18,7 +18,7 @@ const NotePreview = ({ note }: NotePreviewProps) => {
         <h2>{note.title}</h2>
       </header>
       <div className={css.date}>
-        {/* <time>{new Date(note.createdAt).toLocaleString()}</time> */}
+        <time>{new Date(note.createdAt).toLocaleString()}</time>
       </div>
       <p className={css.content}>{note.content}</p>
       {note.tag && <span className={css.tag}>{note.tag}</span>}
