@@ -20,13 +20,21 @@ const TagsMenu = ({ categories }: TagsMenuProps) => {
       {isOpen && (
         <ul className={css.menuList}>
           <li className={css.menuItem}>
-            <Link href={`/notes/filter/all`} onClick={toggle}>
+            <Link
+              className={css.menuLink}
+              href={`/notes/filter/all`}
+              onClick={toggle}
+            >
               All notes
             </Link>
           </li>
           {categories.map((category) => (
             <li key={category.id} className={css.menuItem}>
-              <Link href={`/notes/filter/${category.name}`} onClick={toggle}>
+              <Link
+                className={css.menuLink}
+                href={`/notes/filter/${category.name}`}
+                onClick={toggle}
+              >
                 {category.name}
               </Link>
             </li>

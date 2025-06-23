@@ -10,12 +10,7 @@ const NoteModalPage = async ({ params }: Props) => {
   const { id } = await params;
   const note = await getSingleNote(Number(id));
 
-  return (
-    <NoteClient note={note} />
-    // <Modal closeModal={closeModal}>
-    //   <NotePreview id={Number(params.id)} />
-    // </Modal>
-  );
+  return <NoteClient note={note} />;
 };
 
 export default NoteModalPage;

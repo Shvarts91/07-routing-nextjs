@@ -3,9 +3,9 @@ import Notes from "./Notes.client";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug?: string[];
-  };
+  }>;
 };
 
 export default async function FilteredNotesPage({ params }: Props) {
